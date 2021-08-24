@@ -42,7 +42,8 @@ class _BottomNavigationBarState extends State<BottomNavigationBarPage> {
         currentIndex: _currentIndex,
         selectedFontSize: 12,
         unselectedFontSize: 12,
-        selectedItemColor: Color(0xFFFF6666),
+        selectedItemColor: Color(0xFFFFD569),
+        backgroundColor: Colors.white,
         // unselectedItemColor: Color(0xFF383838),
         items: [
           BottomNavigationBarItem(

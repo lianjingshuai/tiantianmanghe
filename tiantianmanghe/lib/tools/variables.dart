@@ -2,7 +2,7 @@
  * @Description: 认真做事，踏实做人
  * @Author: 连京帅
  * @Date: 2019-06-28 11:14:59
- * @LastEditTime: 2021-07-23 17:04:43
+ * @LastEditTime: 2021-08-20 09:39:09
  * @LastEditors: Please set LastEditors
  */
 // import 'package:aplus/common/common_headers.dart';
@@ -88,19 +88,19 @@ double safeAreaHeight(BuildContext context) {
 // body高度，减去了 状态栏高度 导航栏高度 底部安全高度
 bodyHeight(BuildContext context) => (screenHeight(context) - statusBarHeight(context) - appBarHeight - safeAreaHeight(context));
 
-/*
- * 👇👇👇字号
- */
-// 主要字号大小
-fontSizeMain(BuildContext context) => 15;
-// 大号字号
-fontSizeBig(BuildContext context) => 16;
-// 最大字号
-fontSizeMax(BuildContext context) => 18;
-// 小号字号
-fontSizeSmall(BuildContext context) => 12;
-// 最小字号
-fontSizeMin(BuildContext context) => 11;
+// /*
+//  * 👇👇👇字号
+//  */
+// // 主要字号大小
+// fontSizeMain(BuildContext context) => 15;
+// // 大号字号
+// fontSizeBig(BuildContext context) => 16;
+// // 最大字号
+// fontSizeMax(BuildContext context) => 18;
+// // 小号字号
+// fontSizeSmall(BuildContext context) => 12;
+// // 最小字号
+// fontSizeMin(BuildContext context) => 11;
 fontSize14(BuildContext context) => 14;
 fontSize12(BuildContext context) => 12;
 fontSize18(BuildContext context) => 18;
@@ -108,57 +108,58 @@ fontSize17(BuildContext context) => 17;
 fontSize16(BuildContext context) => 16;
 fontSize15(BuildContext context) => 15;
 
-/*
- * 👇👇👇高度
- */
-// 列表高度包括分割线
-heightListOverall(BuildContext context) => 44;
-// 列表高度不包括分割线
-heightListItem(BuildContext context) => 43;
-// 列表分割线高度
-heightListLine(BuildContext context) => 1;
-height50(BuildContext context) => 50;
-height49(BuildContext context) => 49;
-height1(BuildContext context) => 1;
+// /*
+//  * 👇👇👇高度
+//  */
+// // 列表高度包括分割线
+// heightListOverall(BuildContext context) => 44;
+// // 列表高度不包括分割线
+// heightListItem(BuildContext context) => 43;
+// // 列表分割线高度
+// heightListLine(BuildContext context) => 1;
+// height50(BuildContext context) => 50;
+// height49(BuildContext context) => 49;
+// height1(BuildContext context) => 1;
 
-/*
- * 👇👇👇边距
- */
-// 宽边距
-boundaryBroad(BuildContext context) => 15;
-// 窄边距
-boundaryNarrow(BuildContext context) => 10;
-// 边框16
-boundary16(BuildContext context) => 16;
+// /*
+//  * 👇👇👇边距
+//  */
+// // 宽边距
+// boundaryBroad(BuildContext context) => 15;
+// // 窄边距
+// boundaryNarrow(BuildContext context) => 10;
+// // 边框16
+// boundary16(BuildContext context) => 16;
 
-/*
- * 👇👇👇圆角
- */
-// 主要圆角大小
-radianSizeMain(BuildContext context) => 5;
-radianSizeBig(BuildContext context) => 3;
-radianSizeSmall(BuildContext context) => 8;
+// /*
+//  * 👇👇👇圆角
+//  */
+// // 主要圆角大小
+// radianSizeMain(BuildContext context) => 5;
+// radianSizeBig(BuildContext context) => 3;
+// radianSizeSmall(BuildContext context) => 8;
 
 /*
  * 👇👇👇颜色
  */
+
 // 主题色背景色
-colorThemeBackground() => Color(0xFFF9F9F9);
-// 主题色红色
-colorThemeRed() => Colors.red;
-bottomItemCancelButtonColor() => Color(0xFF2187FF);
-// 主题色红色
-colorThemeWhite() => Colors.white;
-// 文字颜色主要
-colorTextMain() => Color(0xFF333333);
-// 文字颜色浅色
-colorTextLight() => Color(0xFF676767);
-// 文字颜色最浅
-colorTextLightEst() => Color(0xFF999999);
-// 主要分割线颜色
-colorLineMain() => Color(0xFFF5F5F9);
-// 主要边框颜色
-colorRimMain() => Color(0xFFD6D6D6);
+colorTheme() => Color(0xFFFFD569);
+// // 主题色红色
+// colorThemeRed() => Colors.red;
+// bottomItemCancelButtonColor() => Color(0xFF2187FF);
+// // 主题色红色
+// colorThemeWhite() => Colors.white;
+// // 文字颜色主要
+// colorTextMain() => Color(0xFF333333);
+// // 文字颜色浅色
+// colorTextLight() => Color(0xFF676767);
+// // 文字颜色最浅
+// colorTextLightEst() => Color(0xFF999999);
+// // 主要分割线颜色
+// colorLineMain() => Color(0xFFF5F5F9);
+// // 主要边框颜色
+// colorRimMain() => Color(0xFFD6D6D6);
 // 黑色透明
 colorTransparent() => Color(0x66000000);
 color0xFF2F3A45() => Color(0xFF2F3A45);

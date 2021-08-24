@@ -16,9 +16,9 @@ import 'package:tiantianmanghe/request/network/api.dart';
 import 'package:tiantianmanghe/model/base_model.dart';
 import 'dart:convert';
 
-abstract class VRApi<R> extends Api<R> {
-  VRApi() {
-    baseUrl = "http://192.168.1.3:5088/";
+abstract class BusinessApi<R> extends Api<R> {
+  BusinessApi() {
+    baseUrl = "http://47.242.14.242/";
     header = {
       'Accept': 'application/json',
     };
@@ -31,16 +31,17 @@ abstract class VRApi<R> extends Api<R> {
     dynamic globalKey,
     dynamic context,
   }) {
+    print(obj);
     String resultNo = '0';
     Map? map;
     try {
       map = obj as Map;
-      resultNo = map['msgcode'];
+      resultNo = map['respCode'];
     } catch (e) {
       resultNo = '0';
     }
 
-    if (int.parse(resultNo) != 1) {
+    if (resultNo != '9999') {
       if (map!['msg'] != null) {
         if (isShowText != null && isShowText) {
           if (context != null) {
@@ -53,6 +54,7 @@ abstract class VRApi<R> extends Api<R> {
       }
     }
 
+    // ignore: unrelated_type_equality_checks
     return resultNo == -1 ? false : true;
   }
 
@@ -62,21 +64,20 @@ abstract class VRApi<R> extends Api<R> {
   }
 }
 
-class VRApiUrl<R> extends VRApi<R> {
+class BusinessApiUrl<R> extends BusinessApi<R> {
   // VR带看获取Token vrLeadSeeHouse
-  static VRApiUrl vrLeadSeeHouse(params) => VRApiUrl<BaseModel>()
-    ..path = ''
-    ..body = params
-    ..method = Method.POST
-    ..dataConvert = (data) => BaseModel.fromJson(data);
+  // static VRApiUrl vrLeadSeeHouse(params) => VRApiUrl<BaseModel>()
+  //   ..path = ''
+  //   ..body = params
+  //   ..method = Method.POST
+  //   ..dataConvert = (data) => BaseModel.fromJson(data);
 
-  static VRApiUrl login(params) {
-    String srt = json.encode(params);
-    return VRApiUrl<BaseModel>()
-      // ..path = 'user/login'
-      ..path = ''
+  static BusinessApiUrl login(params) {
+    // String srt = json.encode(params);
+    return BusinessApiUrl<BaseModel>()
+      ..path = 'manghe_account/loginSendMessage'
       ..body = params
-      ..method = Method.GET
+      ..method = Method.POST
       ..dataConvert = (data) {
         String srt = json.encode(data);
         return BaseModel.fromJson(data);

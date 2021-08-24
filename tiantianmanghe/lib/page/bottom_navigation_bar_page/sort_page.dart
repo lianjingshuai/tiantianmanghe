@@ -30,7 +30,7 @@ class _SortState extends State<SortPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        brightness: Brightness.dark,
+        // brightness: Brightness.dark,
         elevation: 0,
         title: Text('分类'),
       ),

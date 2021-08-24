@@ -8,7 +8,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:qiniu_flutter_sdk/qiniu_flutter_sdk.dart'; // 七牛云存储
+import 'package:qiniu_flutter_sdk/qiniu_flutter_sdk.dart';
+import 'package:tiantianmanghe/tools/header.dart';
+import 'package:tiantianmanghe/tools/variables.dart'; // 七牛云存储
+
 
 class PersonPage extends StatefulWidget {
   @override
@@ -32,21 +35,41 @@ class _PersonState extends State<PersonPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        brightness: Brightness.dark,
+        // brightness: Brightness.dark,
         elevation: 0,
         title: Text('我的'),
       ),
-      body: Container(
-        color: Colors.white,
+      body: Center(
         child: GestureDetector(
           child: Container(
-            color: Colors.red,
             width: 100,
             height: 50,
-            child: Text('data'),
+            color: colorTheme(),
+            alignment: Alignment.center,
+            child: Text(
+              '点击登录',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
           ),
           onTap: () {
-            shangchauntupian();
+            
+            Request(
+              context: context,
+              api: BusinessApiUrl.login({
+                'register_Mobile': '15712863688',
+              }),
+              onSuccess: (response) {
+                // 请求成功
+              },
+              onArbitraryError: (a) {
+                // 失败
+              },
+              onCompleted: (a) {
+                // 请求完成
+              },
+            );
           },
         ),
       ),

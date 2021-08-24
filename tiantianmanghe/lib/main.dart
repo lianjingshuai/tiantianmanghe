@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.red,
-        primaryColor: Color(0xFFFF6666),
+        primarySwatch: Colors.orange,
+        primaryColor: colorTheme(),
       ),
       home: BottomNavigationBarPage(),
     );

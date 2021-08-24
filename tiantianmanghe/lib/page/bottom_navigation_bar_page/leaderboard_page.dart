@@ -30,7 +30,7 @@ class _LeaderboardState extends State<LeaderboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        brightness: Brightness.dark,
+        // brightness: Brightness.dark,
         elevation: 0,
         title: Text('榜单'),
       ),

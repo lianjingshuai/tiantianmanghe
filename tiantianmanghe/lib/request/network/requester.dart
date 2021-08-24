@@ -16,6 +16,8 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 import 'package:common_utils/common_utils.dart';
+import 'package:crypto/crypto.dart';
+
 /// @description 网络请求器
 ///
 /// @author 燕文强
@@ -211,14 +213,32 @@ class Request {
       }
     }
 
-    if (api?.body is FormData) {
+    if (api!.body is FormData) {
       // 上传图片
     } else {
       // 实体转json
-      String jsonStr = json.encode(api?.body);
-      api?.body = json.decode(jsonStr);
+      String jsonStr = json.encode(api!.body);
+      Map body = json.decode(jsonStr);
+      body['timestamp'] = DateTime.now().millisecondsSinceEpoch;
+      if (Platform.isIOS) {
+        body['requestType'] = '1';
+      }else if (Platform.isAndroid) {
+        body['requestType'] = '2';
+      }else {
+        body['requestType'] = '3';
+      }
+      api!.body = body;
+      jsonStr = json.encode(api!.body);
+      // 加密
+      var key = utf8.encode('tiantianmanghe');
+      var bytes = utf8.encode(jsonStr);
+      var hmacSha256 = Hmac(sha256, key); // HMAC-SHA256
+      var digest = hmacSha256.convert(bytes).toString();
+      api!.header!['signature'] = digest;
+
       print('👇👇👇👇👇👇请求参数👇👇👇👇👇👇');
       print(api!.requestUrl());
+      print(api!.body);
       print(jsonStr);
       print(json.encode(api!.header));
       print('👆👆👆👆👆👆请求参数👆👆👆👆👆👆');
@@ -233,9 +253,9 @@ class Request {
       options: Options(
         method: method,
         // connectTimeout: api?.connectTimeout,
-        sendTimeout: api?.sendTimeout,
-        receiveTimeout: api?.receiveTimeout,
-        headers: api?.header,
+        sendTimeout: api!.sendTimeout,
+        receiveTimeout: api!.receiveTimeout,
+        headers: api!.header,
         // 响应数据类型设置为json
         responseType: ResponseType.json,
         // 以application/x-www-form-urlencoded格式发送数据
@@ -265,19 +285,19 @@ class Request {
           hiddenLoading(context!);
         }
       }
-      if (api?.dataConvert == null) {
-        api?.dataConvert = (data) {
+      if (api!.dataConvert == null) {
+        api!.dataConvert = (data) {
           return data;
         };
       }
-      dynamic data = api?.dataConvert!(response.data);
-      if (api?.state(
+      dynamic data = api!.dataConvert!(response.data);
+      if (api!.state(
         obj: response.data,
         isShowText: isShowText ?? null,
         context: context ?? null,
         // scaffoldState: globalKey.currentState ?? null,
         // globalKey: globalKey ?? null,
-      ) as bool) {
+      )) {
         if (onSuccess != null) {
           print('成功回调');
           onSuccess!(ResponseData(metadata: response, data: data));
